@@ -1,3 +1,9 @@
+require 'rubygems'
+require 'sinatra'
+require 'mongoid'
+require 'slim'
+require 'json'
+
 Dir["./models/**/*.rb"].each { |model| require model }
 
 class Application < Sinatra::Base
