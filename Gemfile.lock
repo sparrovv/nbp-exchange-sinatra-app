@@ -21,13 +21,16 @@ GEM
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
     multi_json (1.0.3)
+    nbp_exchange (0.0.1)
+      nokogiri
+    nokogiri (1.5.0)
     rack (1.3.5)
     rack-protection (1.1.4)
       rack
     sinatra (1.3.1)
-      rack (>= 1.3.4, ~> 1.3)
-      rack-protection (>= 1.1.2, ~> 1.1)
-      tilt (>= 1.3.3, ~> 1.3)
+      rack (~> 1.3, >= 1.3.4)
+      rack-protection (~> 1.1, >= 1.1.2)
+      tilt (~> 1.3, >= 1.3.3)
     sinatra-mongoid (0.0.2)
       mongo_ext
       mongoid
@@ -47,6 +50,7 @@ DEPENDENCIES
   bson_ext (~> 1.4.0)
   json
   mongoid (= 2.0.0)
+  nbp_exchange
   sinatra
   sinatra-mongoid
   slim
