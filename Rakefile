@@ -16,6 +16,23 @@ task :seed do
   puts "end"
 end
 
+desc "Run Daily Import"
+task :cron do
+  puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}"
+  date = Date.today
+  Currency.all.each do |c|
+    currency = NbpExchange::Currency.new(c.symbol)
+
+    begin
+      rate = currency.rate(date)
+      c.average_rates.create(:date => d, :value => rate.average_exchange_rate)
+    rescue => e
+      puts "Error for date #{date}"
+      puts e.inspect
+    end
+  end
+end
+
 desc "Import Rates Since 2011-07-02"
 task :import_rates do
   symbol = ENV['symbol'] || 'usd'
@@ -34,7 +51,7 @@ task :import_rates do
 
       c.average_rates.create(:date => d, :value => rate.average_exchange_rate)
     rescue => e
-      puts "Error for date #{e}"
+      puts "Error for date #{d}"
       puts e.inspect
     end
   end
