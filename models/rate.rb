@@ -11,7 +11,7 @@ class AverageRate
   validates_presence_of :value
 
   def self.find_last_available(date)
-    # Had problems on heroku cause doesn't worked well when orddered by DESC - this is the safest way
+    # Had problems on heroku cause it didn't order by DESC (weired) - this is the safest way at the momment
     where(:date.lte => date).order_by(:date).last
   end
 
