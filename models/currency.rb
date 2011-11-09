@@ -11,6 +11,6 @@ class Currency
   validates_presence_of :name
 
   def self.find_by_symbol(symbol)
-    where(:symbol => symbol).first
+    where(:symbol => symbol.downcase).first
   end
 end
