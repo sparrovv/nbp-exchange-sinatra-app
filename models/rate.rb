@@ -12,9 +12,12 @@ class AverageRate
 
   def self.find_last_available(date)
     ordered = where(:date.lte => date).order_by(:date, :desc).all
-    puts ordered.inspect
-    puts ordered.first.inspect
-    puts ordered.last.inspect
+
+    puts where(:date.lte => date).order_by(:date).first.inspect
+    puts where(:date.lte => date).order_by(:date, :asc).first.inspect
+    puts where(:date.lte => date).order_by(:date, :desc).first.inspect
+    puts where(:date.lte => date).order_by(:date, :desc).last.inspect
+
     ordered.first
   end
 
