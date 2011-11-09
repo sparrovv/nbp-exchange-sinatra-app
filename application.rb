@@ -26,9 +26,8 @@ class Application < Sinatra::Base
   end
 
   get '/' do
-    @usd_rates = Currency.find_by_symbol('usd').average_rates.map{|r| [r.date.to_time.to_i * 1000, r.value]}.to_json
-
-    @eur_rates = Currency.find_by_symbol('eur').average_rates.map{|r| [r.date.to_time.to_i * 1000, r.value] }.to_json
+    @usd_rates = Currency.find_by_symbol('usd').average_rates.map{|r| [to_js_time(r.date), r.value]}.to_json
+    @eur_rates = Currency.find_by_symbol('eur').average_rates.map{|r| [to_js_time(r.date), r.value] }.to_json
 
     haml :index
   end
@@ -79,6 +78,10 @@ class Application < Sinatra::Base
       error 404, {:error => "currency not found"}.to_json
     end
 
+  end
+
+  def to_js_time(date)
+    date.to_time.to_i * 1000
   end
 
 end
