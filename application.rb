@@ -61,9 +61,10 @@ class Application < Sinatra::Base
   end
 
   get '/api/v1/currencies/:symbol/average_rates/last_available/:date.json' do
+    date = params[:date] || Date.today
     currency = Currency.find_by_symbol params[:symbol]
     if currency
-      rate = currency.average_rates.find_last_available params[:date]
+      rate = currency.average_rates.find_last_available date
       if rate
         rate.to_json
       else

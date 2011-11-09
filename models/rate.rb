@@ -11,7 +11,8 @@ class AverageRate
   validates_presence_of :value
 
   def self.find_last_available(date)
-    where(:date.lte => date).order_by(:date, :desc).limit(1).first
+    ordered = where(:date.lte => date).order_by(:date, :desc).all
+    ordered.first
   end
 
 end

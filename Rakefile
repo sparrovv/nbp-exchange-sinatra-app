@@ -10,8 +10,10 @@ task :setup do
 end
 
 task :seed do
+  puts "starting"
   Currency.create(:symbol => 'usd', :name => 'Dolar amerykański')
   Currency.create(:symbol => 'eur', :name => 'Euro')
+  puts "end"
 end
 
 desc "Import Rates Since 2011-07-02"
