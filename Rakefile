@@ -25,7 +25,7 @@ task :cron do
 
     begin
       rate = currency.rate(date)
-      c.average_rates.create(:date => d, :value => rate.average_exchange_rate)
+      c.average_rates.create(:date => date, :value => rate.average_exchange_rate)
     rescue => e
       puts "Error for date #{date}"
       puts e.inspect
