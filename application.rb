@@ -2,7 +2,7 @@ require 'rubygems'
 
 require 'sinatra'
 require 'mongoid'
-require 'slim'
+require 'haml'
 require 'json'
 
 Dir["./models/**/*.rb"].each { |model| require model }
@@ -12,7 +12,7 @@ class Application < Sinatra::Base
   configure do
     set :root, File.dirname(__FILE__)
     set :static, true
-    set :template, :slim
+    set :template, :haml
   end
 
   Mongoid.configure do |config|
@@ -26,7 +26,11 @@ class Application < Sinatra::Base
   end
 
   get '/' do
-    slim :index
+    @usd_rates = Currency.find_by_symbol('usd').average_rates.map{|r| [r.date.to_time.to_i * 1000, r.value]}.to_json
+
+    @eur_rates = Currency.find_by_symbol('eur').average_rates.map{|r| [r.date.to_time.to_i * 1000, r.value] }.to_json
+
+    haml :index
   end
 
   get '/api/v1/currencies.json' do
@@ -77,7 +81,4 @@ class Application < Sinatra::Base
 
   end
 
-  post '/daily_update' do
-
-  end
 end

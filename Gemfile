@@ -5,7 +5,7 @@ gem 'sinatra-mongoid', :require => 'sinatra/mongoid'
 gem 'mongoid', '2.0.0'
 gem "bson_ext", '~> 1.4.0 '
 gem 'json'
-gem 'slim'
+gem 'haml'
 gem 'nbp_exchange', '~> 0.0.2'
 
 group :test do

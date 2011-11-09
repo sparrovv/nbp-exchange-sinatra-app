@@ -1,0 +1,14 @@
+%h2 Kurs PLN / USD
+
+#usd.chart
+
+%h2 Kurs PLN / EUR
+
+#eur.chart
+
+:javascript
+  var usd = #{@usd_rates};
+  var eur = #{@eur_rates};
+
+  $(App.Chart.draw("#usd", [usd]))
+  $(App.Chart.draw("#eur", [eur]))

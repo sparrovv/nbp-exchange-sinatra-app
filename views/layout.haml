@@ -1,0 +1,27 @@
+%html
+  %head
+    %title
+      = "API - Średni kurs złotego na przestrzeni miesięcy"
+    %meta{:name => "keywords", :content => "nbp średni kurs walut pln" } 
+    %meta{:name => "language", :content => "pl" } 
+    %meta{:name => "Content-Type", :content => "text/html; charset=utf-8" } 
+      
+    %link{ :href=>"/stylesheets/reset.css", :media=>"screen", :rel=>"stylesheet", :type=>"text/css" }
+    %link{ :href=>"/stylesheets/grid.css", :media=>"screen", :rel=>"stylesheet", :type=>"text/css" }
+    %link{ :href=>"/stylesheets/application.css", :media=>"screen", :rel=>"stylesheet", :type=>"text/css" }
+
+    %script{:type => "text/javascript", :src  => "/javascripts/jquery.min.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/jquery.flot.min.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/application.js"}
+
+  %body
+
+    %header
+      .container_12
+      %hr/
+
+    .container_12
+      %section.welcome.grid_12
+        %h1 Średni kurs złotego według Narodowego Banku Polskiego
+        %hr
+        = yield
