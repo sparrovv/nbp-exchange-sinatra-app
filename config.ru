@@ -7,12 +7,11 @@ require 'yaml'
 require './application'
 
 mail_smtp_settings = {
-  :server => 'smtp.gmail.com',
-  :domain => 'gmail.com',
-  :port => 587,
+  :server => "smtp.sendgrid.net",
+  :domain => ENV['SENDGRID_DOMAIN'],
   :authentication => 'plain',
-  :user_name => ENV['EMAIL_USERNAME'],
-  :password => ENV['EMAIL_PASSWORD']
+  :user_name =>ENV['SENDGRID_USERNAME'],
+  :password => ENV['SENDGRID_PASSWORD']
 }
 
 use Rack::MailExceptions do |m|
