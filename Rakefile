@@ -27,8 +27,9 @@ task :cron do
       rate = currency.rate(date)
       c.average_rates.create(:date => date, :value => rate.average_exchange_rate)
     rescue => e
+      send_email(e.inspect) unless Date.today.sunday? || Date.today.saturday?
       puts "Error for date #{date}"
-      puts e.inspect
+      raise
     end
   end
 end
@@ -58,7 +59,7 @@ task :import_rates do
 
 end
 
-task :email_test do
+def send_email(exception)
   require 'mail'
   options = { :address              => "smtp.sendgrid.net",
               :domain               => ENV['SENDGRID_DOMAIN'],
@@ -71,10 +72,10 @@ task :email_test do
   end
 
   Mail.deliver do
-    from    'test@heroku.com'
+    from    'nbp_exchange@heroku.com'
     to      'sparrovv@gmail.com'
-    subject 'Here is the image you wanted'
-    body    "Body"
+    subject "Exception - when importing currencies"
+    body "#{exception}"
   end
 
 end
