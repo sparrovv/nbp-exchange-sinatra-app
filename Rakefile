@@ -58,7 +58,8 @@ task :import_rates do
 
 end
 
-def :email_test do
+task :email_test do
+  require 'mail'
   options = { :address              => "smtp.sendgrid.net",
               :domain               => ENV['SENDGRID_DOMAIN'],
               :user_name            => ENV['SENDGRID_USERNAME'],
