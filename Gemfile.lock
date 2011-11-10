@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rafaelss/rack-contrib.git
+  revision: cb2c23e54e978ca546b4948868cb3c11438efb68
+  branch: mail
+  specs:
+    rack-contrib (0.9.3)
+      rack (>= 0.9.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -13,6 +21,11 @@ GEM
     haml (3.0.25)
     i18n (0.6.0)
     json (1.6.1)
+    mail (2.2.1)
+      activesupport (>= 2.3.4)
+      mime-types
+      treetop (>= 1.4.5)
+    mime-types (1.17.2)
     mongo (1.4.0)
       bson (= 1.4.0)
     mongo_ext (0.19.3)
@@ -25,9 +38,8 @@ GEM
     nbp_exchange (0.0.2)
       nokogiri
     nokogiri (1.5.0)
+    polyglot (0.3.3)
     rack (1.3.5)
-    rack-contrib (1.1.0)
-      rack (>= 0.9.1)
     rack-protection (1.1.4)
       rack
     sinatra (1.3.1)
@@ -39,7 +51,9 @@ GEM
       mongoid
       sinatra
     tilt (1.3.3)
-    tmail (1.2.7.1)
+    treetop (1.4.10)
+      polyglot
+      polyglot (>= 0.3.1)
     tzinfo (0.3.31)
     will_paginate (3.0.2)
 
@@ -50,9 +64,9 @@ DEPENDENCIES
   bson_ext (~> 1.4.0)
   haml
   json
+  mail (= 2.2.1)
   mongoid (= 2.0.0)
   nbp_exchange (~> 0.0.2)
-  rack-contrib
+  rack-contrib!
   sinatra
   sinatra-mongoid
-  tmail
