@@ -10,12 +10,11 @@ Dir["./models/**/*.rb"].each { |model| require model }
 
 class Application < Sinatra::Base
 
-  enable :raise_errors
-
   configure do
     set :root, File.dirname(__FILE__)
     set :static, true
     set :template, :haml
+    enable :raise_errors
   end
 
   Mongoid.configure do |config|
