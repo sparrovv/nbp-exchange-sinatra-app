@@ -57,3 +57,23 @@ task :import_rates do
   end
 
 end
+
+def :email_test do
+  options = { :address              => "smtp.sendgrid.net",
+              :domain               => ENV['SENDGRID_DOMAIN'],
+              :user_name            => ENV['SENDGRID_USERNAME'],
+              :password             => ENV['SENDGRID_PASSWORD'],
+              :authentication       => 'plain'}
+
+  Mail.defaults do
+    delivery_method :smtp, options
+  end
+
+  Mail.deliver do
+    from    'test@heroku.com'
+    to      'sparrovv@gmail.com'
+    subject 'Here is the image you wanted'
+    body    "Body"
+  end
+
+end

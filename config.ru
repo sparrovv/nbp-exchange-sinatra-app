@@ -1,5 +1,5 @@
-require 'bundler'
-Bundler.setup
+require 'rubygems'
+require 'bundler/setup'
 
 require 'rack/contrib'
 require 'yaml'
