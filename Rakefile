@@ -60,6 +60,7 @@ task :import_rates do
 end
 
 def send_email(exception)
+
   require 'mail'
   options = { :address              => "smtp.sendgrid.net",
               :domain               => ENV['SENDGRID_DOMAIN'],
@@ -73,9 +74,8 @@ def send_email(exception)
 
   Mail.deliver do
     from    'nbp_exchange@heroku.com'
-    to      'sparrovv@gmail.com'
+    to      ENV['MAIL_TO'] || 'sparrovv@gmail.com'
     subject "Exception - when importing currencies"
     body "#{exception}"
   end
-
 end
