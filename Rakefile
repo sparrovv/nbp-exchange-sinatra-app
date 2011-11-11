@@ -74,7 +74,7 @@ def send_email(exception)
 
   Mail.deliver do
     from    'nbp_exchange@heroku.com'
-    to      ENV['MAIL_TO'] || 'sparrovv@gmail.com'
+    to      ENV['MAIL_TO']
     subject "Exception - when importing currencies"
     body "#{exception}"
   end
