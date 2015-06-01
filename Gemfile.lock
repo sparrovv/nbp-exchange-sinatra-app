@@ -7,7 +7,7 @@ GIT
       rack (>= 0.9.1)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activemodel (3.1.1)
       activesupport (= 3.1.1)
