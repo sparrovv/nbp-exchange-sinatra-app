@@ -9,6 +9,7 @@ gem 'haml'
 gem 'nbp_exchange', '~> 0.0.3'
 gem "rack-contrib", :git => "git://github.com/rafaelss/rack-contrib.git", :branch => "mail"
 gem "mail", "2.2.1"
+gem "puma"
 
 group :test do
 end
